@@ -1,0 +1,550 @@
+//Код писался на 4(это значит, что в каждом задании я выбирала 1 схему )
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int variant , razmer ,deistvie ;
+	razmer = 0;
+    variant = 0;
+    deistvie = 0;
+	while (variant != 8) 
+    {
+	int variant;
+    	cout << "Выберите задание: " << endl;
+		cout << endl;
+		cout << "1. Заполнить матрицу по спирали" << endl;
+		cout << "2. Переставить блоки матрицы (пункт в)'" << endl;
+		cout << "3. Сортировать элементы матрицы " << endl;
+		cout << "4. Уменьшить  элементы матрицы на введенное число " << endl;
+		cout << "5. Увеличить  элементы матрицы на введенное число " << endl;
+		cout << "6. Умножить  элементы матрицы на введенное число " << endl;
+		cout << "7. Разделить  элементы матрицы на введенное число " << endl;
+		cout << "8. ";
+		cout <<"Выход " << endl;
+		cout << ">>> ";
+		cin >> variant;
+		switch (variant)
+		{
+		case (1): 
+           {
+			do 
+              {
+				cout << "Выберите размер матрицы: " << endl;
+				cout << endl;
+				cout << "1. Матрица 6x6" << endl;
+				cout << "2. Матрица 8x8" << endl;
+				cout << "3. Матрица 10x10" << endl;
+				cout << "4. Выход" << endl;
+				cout << ">>> ";
+				cin >> razmer;
+
+			    switch (razmer)
+				{
+				 case (1): 
+				
+                 {
+                  int a=6;
+                  int A[a][a];
+                  int argc , i=1,j,k, p=a/2;
+                  for (int i = 0; i < a; i++)
+                   {
+                     for (int j = 0; j < a; j++)
+                      {
+                       A[i][j] =1 + rand() % 36 ;//создаю рандомные числа для матрицы
+                      }
+                   }  
+                     cout << "Матрица до заполнения\n";
+                         for (int i = 0; i < 6; i++)
+                           {
+                            for (int j = 0; j <6; j++)
+                             {
+                              cout.width(3);// минимальное количество символов, которые будет использовать следующее выходное значение. 
+                              cout <<A[i][j]<<" ";
+                             }
+                             cout <<"\n";
+                           }
+                       for(k=1;k<=p;k++)//k-это номер витка
+                      {
+                       for (j=k-1;j<a-k+1;j++) A[k-1][j]=i++;//Определение значений верхнего  столбца 
+                       for (j=k;j<a-k+1;j++) A[j][a-k]=i++;// По правому вертикальному столбцу
+                       for (j=a-k-1;j>=k-1;--j) A[a-k][j]=i++;//по нижнему горизонтальному столбцу 
+                       for (j=a-k-1;j>=k;j--) A[j][k-1]=i++;// по левому вертикальному столбцу
+                      }
+                    cout << "Так выглядит массив размерности 6*6 в пункте а: \n";
+                     if (a%2==1) A[p][p]=a*a;
+                     for(i=0;i<a;i++)
+                     for(j=0;j<a;j++)
+                      {
+                      cout.width(3);
+                      cout <<  A[i][j];
+                      if(j==a-1) 
+                      cout << "\n";
+                      } 
+                      break;
+                 }
+				case (2):   
+                {
+                  int b=8;
+                  int B[b][b];
+                  int argc , i=1,j,k, p=b/2;
+                     for (int i = 0; i < b; i++)
+                      {
+                       for (int j = 0; j < b; j++)
+                        {
+                        B[i][j] =1 + rand() % 64 ;
+                        }
+                      }  
+                cout << "Матрица до заполнения\n";
+                    for (int i = 0; i < 8; i++)
+                      {
+                      for (int j = 0; j <8; j++)
+                        {
+                         cout.width(3); 
+                         cout <<B[i][j]<<"  ";
+                         }
+                       cout <<"\n";
+                      }
+                      for(k=1;k<=p;k++)/*Цикл по номеру витка*/
+                       {
+                       for (j=k-1;j<b-k+1;j++) B[k-1][j]=i++;/*Определение значений верхнего гор столбца*/ 
+                       for (j=k;j<b-k+1;j++) B[j][b-k]=i++;/* --//-- По правому вертикальному столбцу*/
+                       for (j=b-k-1;j>=k-1;--j) B[b-k][j]=i++;/* --//-- по нижнему горизонтальному столбцу*/ 
+                       for (j=b-k-1;j>=k;j--) B[j][k-1]=i++;/* --//-- по левому вертикальному столбцу*/
+                       }
+                  cout << "Так выглядит массив размерности 8*8 в пункте а: \n";
+                  if (b%2==1) B[p][p]=b*b;
+                  for(i=0;i<b;i++)
+                  for(j=0;j<b;j++)
+                   {
+                    cout.width(3);
+                    cout <<  B[i][j]<< "   ";
+                    if(j==b-1) 
+                    cout << "\n";
+                   } 
+                    break;
+               }
+                 case (3): 
+               	 {
+                 int c=10;
+                 int C[c][c];
+                 int argc , i=1,j,k, p=c/2;
+                  for (int i = 0; i < c; i++)
+                  {
+                   for (int j = 0; j < c; j++)
+                   {
+                   C[i][j] =1 + rand() % 100 ;
+                   }
+                  }  
+                cout << "Матрица до заполнения\n";
+                    for (int i = 0; i < 10; i++)
+                    {
+                      for (int j = 0; j <10; j++)
+                      {
+                       cout.width(3);
+                       cout <<C[i][j]<<" ";
+                      }
+                       cout <<"\n";
+                    }
+                    for(k=1;k<=p;k++)/*Цикл по номеру витка*/
+                    {
+                     for (j=k-1;j<c-k+1;j++) C[k-1][j]=i++;/*Определение значений верхнего гор столбца*/ 
+                     for (j=k;j<c-k+1;j++) C[j][c-k]=i++;/* --//-- По правому вертикальному столбцу*/
+                     for (j=c-k-1;j>=k-1;--j) C[c-k][j]=i++;/* --//-- по нижнему горизонтальному столбцу*/ 
+                     for (j=c-k-1;j>=k;j--) C[j][k-1]=i++;/* --//-- по левому вертикальному столбцу*/
+                    }
+                  cout << "Так выглядит массив размерности 10*10 в пункте а: \n";
+                    if (c%2==1) C[p][p]=c*c;
+                    for(i=0;i<c;i++)
+                    for(j=0;j<c;j++)
+                   {
+                    cout.width(3);
+                    cout <<  C[i][j]<< "   ";
+                    if(j==c-1) 
+                    cout << "\n";
+                    } 
+                    break;
+               } 
+			  }
+			}
+			while (razmer!= 4);
+			break;
+		}
+		case(2): {
+			      do {
+				      cout << "Выберите размер матрицы: " << endl;
+				      cout << endl;
+				      cout << "1. Матрица 6x6" << endl;
+				      cout << "2. Матрица 8x8" << endl;
+				      cout << "3. Матрица 10x10" << endl;
+				      cout << "4. Выход" << endl;
+				      cout << ">>> ";
+				      cin >> razmer;
+
+				  switch (razmer)
+				    {
+				     case (1): 
+                    { 
+				     int n=6,n1=1, n2=2, n3=3, n4=4, n5=5,n6=6;//создаю переменную, которая будет отвечать за порядок+ переменные , которые отвечают за номер строки.
+                     int arr[6][6];
+                     double **f = new double*[6];//Создаю многомерный массив для более эффективной работы с большими матрицами. 
+                     for (int i = 0; i < 6; i++)
+                     f[i] = new double[n];//выделяю память
+                     for (int i = 0; i < n; i++)
+                       {
+                        for (int j = 0; j < n; j++)
+                         {
+                          f[i][j] =1 + rand() % 36 ;
+                         }
+                       }  
+     
+               cout << "Матрица до перемещения блоков\n";
+                  for (int i = 0; i < n; i++)
+                  {
+                    for (int j = 0; j <n; j++)
+                     {
+                      cout.width(3);
+                      cout <<f[i][j]<<"  ";
+                     }
+                  cout <<"\n";
+                  }
+     
+      
+            double *temp, *tomp,*timp  ;//создаю указатели для обмена строками.
+            temp=f[n1-1];
+            tomp=f[n2-1];
+            timp=f[n3-1];
+            f[n1-1]=f[n6-1];
+            f[n2-1]=f[n5-1];
+            f[n3-1]=f[n4-1];
+            f[n4-1]=timp;
+            f[n5-1]=tomp;
+            f[n6-1]=temp;
+           cout << "Матрица после перемещения блоков\n";
+            for (int i = 0; i < n; i++)
+             {
+              for (int j = 0; j <n; j++)
+              {
+              cout.width(3);
+              cout <<f[i][j]<<" ";
+              }
+               cout <<"\n";
+             }
+               break;
+            }
+				case (2): 
+			    { 
+				int n=8,n1=1, n2=2, n3=3, n4=4, n5=5,n6=6, n7=7 ,n8=8;
+                int arr[8][8];
+                double **f = new double*[8]; 
+                for (int i = 0; i < 8; i++)
+                f[i] = new double[n];
+                for (int i = 0; i < n; i++)
+                 {
+                 for (int j = 0; j < n; j++)
+                  {
+                   f[i][j] =1 + rand() % 64 ;
+                  }
+                 }  
+     
+            cout << "Матрица до перемещения блоков\n";
+            for (int i = 0; i < n; i++)
+            {
+             for (int j = 0; j <n; j++)
+              {
+               cout.width(3);
+               cout <<f[i][j]<<" ";
+              }
+            cout <<"\n";
+            }
+     
+      
+        double *temp, *tomp,*timp, *tamp  ;
+        temp=f[n1-1];
+        tomp=f[n2-1];
+        timp=f[n3-1];
+        tamp=f[n4-1];
+        f[n1-1]=f[n8-1];
+        f[n2-1]=f[n7-1];
+        f[n3-1]=f[n6-1];
+        f[n4-1]=f[n5-1];
+        f[n5-1]=tamp;
+        f[n6-1]=timp;
+        f[n7-1]=tomp;
+        f[n8-1]=temp;
+          cout << "Матрица после перемещения блоков\n";
+         for (int i = 0; i < n; i++)
+         {
+          for (int j = 0; j <n; j++)
+           {
+            cout.width(3);
+            cout <<f[i][j]<<" ";
+           }
+         cout <<"\n";
+         }
+            break;
+        }
+			
+		 case (3): 
+			{ 
+			int n=10,n1=1, n2=2, n3=3, n4=4, n5=5,n6=6, n7=7 ,n8=8,n9=9,n10=10;
+            int arr[10][10];
+            double **f = new double*[10]; 
+            for (int i = 0; i < 10; i++)
+             f[i] = new double[n];
+               for (int i = 0; i < n; i++)
+              {
+                 for (int j = 0; j < n; j++)
+                 {
+                  f[i][j] =1 + rand() % 100 ;
+                 }
+              }  
+     
+        cout << "Матрица до перемещения блоков\n";
+        for (int i = 0; i < n; i++)
+        {
+        for (int j = 0; j <n; j++)
+          {
+           cout.width(3);
+           cout <<f[i][j]<<"  ";
+          }
+           cout <<"\n";
+        }
+     
+      
+        double *temp, *tomp,*timp, *tamp , *tump ;
+        temp=f[n1-1];
+        tomp=f[n2-1];
+        timp=f[n3-1];
+        tamp=f[n4-1];
+        tump=f[n5-1];
+        f[n1-1]=f[n10-1];
+        f[n2-1]=f[n9-1];
+        f[n3-1]=f[n8-1];
+        f[n4-1]=f[n7-1];
+        f[n5-1]=f[n6-1];
+        f[n6-1]=tump;
+        f[n7-1]=tamp;
+        f[n8-1]=timp;
+        f[n9-1]=tomp;
+        f[n10-1]=temp;
+      cout << "Матрица после перемещения блоков\n";
+        for (int i = 0; i < n; i++)
+         {
+         for (int j = 0; j <n; j++)
+           {
+            cout.width(3);
+            cout <<f[i][j]<<" ";
+           }
+          cout <<"\n";
+         }
+         break;
+          }
+	 }
+   }
+	while (razmer != 4);
+	break;
+	}
+		case(3): 
+		{ 
+		 int por;
+		 cout <<"Введите порядок матрицы: ";
+		 cin>> por;
+		 int  Arr[por][por], k1;//k1 является  максимальным числом для рандомных чисел в матрице
+		 cout << "Введите максимальное число для генерации рандомных чисел: ";
+		 cin >> k1;
+		 for (int i = 0; i < por; i++)
+           {
+             for (int j = 0; j < por; j++)
+              {
+               Arr[i][j] =1 + rand() % k1 ;
+              }
+           }  
+     
+         cout << "Матрица до сортировки: \n";
+            for (int i = 0; i < por; i++)
+             {
+              for (int j = 0; j <por; j++)
+               {
+                cout.width(3);
+                cout <<Arr[i][j]<<" ";
+               }
+              cout <<"\n";
+             }
+        cout <<"Матрица после сортировки: \n";   
+			for (int i = 0; i < por*por; i++)//Начинаю сортировку
+				for (int j = 0; j < por*por-1; j++)
+				if (*(*Arr + j) > *(*Arr + j + 1))
+				swap(*(*Arr + j), *(*Arr + j + 1));
+                   for (int i = 0; i < por; i++) 
+					{
+					 for (int j = 0; j < por; j++) 
+					   {
+						cout.width(3);
+						cout << *(*(Arr + i) + j) << " ";
+						}
+					cout << endl;
+					}
+		       break;
+		        }
+       
+		   case (4):
+            { 
+		      int por;
+		      cout <<"Введите порядок матрицы: ";
+		      cin>> por;
+		      int  Arr[por][por],chislo, k1;//k1 является  максимальным числом для рандомных чисел в матрице
+		      cout << "Введите максимальное число для генерации рандомных чисел: ";
+		      cin >> k1;
+		      for (int i = 0; i < por; i++)
+              {
+                for (int j = 0; j < por; j++)
+                {
+                 Arr[i][j] =1 + rand() % k1 ;
+                }
+              }  
+     
+            cout << "Матрица до вычитания: \n";
+            for (int i = 0; i < por; i++)
+            {
+             for (int j = 0; j <por; j++)
+              {
+              cout.width(3);
+              cout <<Arr[i][j]<<" ";
+              }
+             cout <<"\n";
+            }
+           cout <<"Введите вычитаемое: ";
+           cin >> chislo;
+           for (int i = 0; i < por; i++) 
+			{
+			 for (int j = 0; j < por; j++) 
+				{
+				cout.width(3);
+				cout << Arr[i][j]-chislo <<  " ";
+				}
+			  cout << endl;
+			}
+    
+	   break;
+        }
+             case (5): 
+               { 
+		       int por;
+		       cout <<"Введите порядок матрицы: ";
+		       cin>> por;
+		       int  Arr[por][por],chislo, k1;//k1 является  максимальным числом для рандомных чисел в матрице
+		       cout << "Введите максимальное число для генерации рандомных чисел: ";
+		       cin >> k1;
+		       for (int i = 0; i < por; i++)
+               {
+                 for (int j = 0; j < por; j++)
+                 {
+                  Arr[i][j] =1 + rand() % k1 ;
+                 }
+               }  
+        cout << "Матрица до сложения: \n";
+        for (int i = 0; i < por; i++)
+          {
+             for (int j = 0; j <por; j++)
+            {
+             cout.width(3);
+             cout <<Arr[i][j]<<" ";
+            }
+          cout <<"\n";
+          }
+        cout <<"Введите слагаемое: ";
+        cin >> chislo;
+        for (int i = 0; i < por; i++) 
+			{
+				for (int j = 0; j < por; j++) 
+				{
+				cout.width(3);
+				cout << Arr[i][j]+chislo <<  " ";
+				}
+			 cout << endl;
+			}
+         break;
+        }
+                case (6): 
+                { 
+		         int por;
+		         cout <<"Введите порядок матрицы: ";
+		         cin>> por;
+		         int  Arr[por][por],chislo, k1;//k1 является  максимальным числом для рандомных чисел в матрице
+		         cout << "Введите максимальное число для генерации рандомных чисел: ";
+		         cin >> k1;
+		         for (int i = 0; i < por; i++)
+                 {
+                 for (int j = 0; j < por; j++)
+                  {
+                   Arr[i][j] =1 + rand() % k1 ;
+                  }
+                 }  
+         cout << "Матрица до умножения: \n";
+           for (int i = 0; i < por; i++)
+           {
+            for (int j = 0; j <por; j++)
+            {
+            cout.width(3);
+            cout <<Arr[i][j]<<" ";
+            }
+           cout <<"\n";
+          }
+    cout <<"Введите множетель: ";
+    cin >> chislo;
+    for (int i = 0; i < por; i++) 
+	  {
+		for (int j = 0; j < por; j++) 
+			{
+				cout.width(3);
+				cout << Arr[i][j]*chislo <<  " ";
+			}
+		cout << endl;
+	  }
+        break;
+    }
+               case (7): 
+               { 
+		       int por;
+		       cout <<"Введите порядок матрицы: ";
+		       cin>> por;
+		       int  Arr[por][por],chislo, k1;//k1 является  максимальным числом для рандомных чисел в матрице
+		       cout << "Введите максимальное число для генерации рандомных чисел: ";
+		       cin >> k1;
+		       for (int i = 0; i < por; i++)
+                {
+                 for (int j = 0; j < por; j++)
+                  {
+                   Arr[i][j] =1 + rand() % k1 ;
+                  }
+                }  
+             cout << "Матрица до деления: \n";
+               for (int i = 0; i < por; i++)
+               {
+               for (int j = 0; j <por; j++)
+                 {
+                  cout.width(3);
+                  cout <<Arr[i][j]<<" ";
+      
+                 }
+                cout <<"\n";
+               }
+            cout <<"Введите делитель: ";
+            cin >> chislo;
+            for (int i = 0; i < por; i++) 
+			   {
+				for (int j = 0; j < por; j++) 
+				   {
+					cout.width(5);
+				    cout << (double)Arr[i][j]/(double)chislo <<" ";
+				   }
+				cout << endl;
+				}
+                break;
+            }
+	    }
+	}
+	return 0;
+}
+
